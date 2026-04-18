@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anees Ashraf | MERN Stack Developer & AI Enthusiast</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            400: '#4ade80', // Emerald 400
+                            500: '#22c55e', // Emerald 500
+                            600: '#16a34a', // Emerald 600
+                            900: '#14532d', // Emerald 900
+                        },
+                        dark: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#020617',
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'spin-slow': 'spin 12s linear infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+</head>
+<body class="bg-dark-950 text-slate-300 font-sans selection:bg-brand-500 selection:text-white overflow-x-hidden">
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="fixed top-24 right-5 z-[70] flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <span class="text-2xl font-bold font-mono text-white">&lt;<span class="text-brand-400">Anees</span>/&gt;</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#about" class="hover:text-brand-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">About</a>
+                        <a href="#skills" class="hover:text-brand-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Skills</a>
+                        <a href="#projects" class="hover:text-brand-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Projects</a>
+                        <a href="#certifications" class="hover:text-brand-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Certifications</a>
+                        <a href="#contact" class="bg-brand-500 hover:bg-brand-600 text-white px-4 py-2 rounded-full text-sm font-medium transition-all shadow-lg shadow-brand-500/20">Contact Me</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                        <span class="material-symbols-outlined text-3xl">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-dark-900 border-b border-gray-800" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#skills" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Skills</a>
+                <a href="#projects" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</a>
+                <a href="#certifications" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Certifications</a>
+                <a href="#contact" onclick="toggleMobileMenu()" class="text-brand-400 font-bold block px-3 py-2 rounded-md text-base">Contact Me</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20" id="home">
+        <!-- Background decorative elements -->
+        <div class="absolute top-0 -left-4 w-72 h-72 bg-brand-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob"></div>
+        <div class="absolute top-0 -right-4 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-8 left-20 w-72 h-72 bg-emerald-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob animation-delay-4000"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="order-2 lg:order-1 space-y-8 text-center lg:text-left">
+                <div class="inline-flex items-center px-3 py-1 rounded-full border border-brand-500/30 bg-brand-500/10 text-brand-400 text-sm font-medium mb-4">
+                    <span class="w-2 h-2 rounded-full bg-brand-400 mr-2 animate-pulse"></span>
+                    BSCS MUST '25 | Software & AI Dev
+                </div>
+                <h1 class="text-5xl lg:text-7xl font-bold tracking-tight text-white leading-tight">
+                    Innovating with <br>
+                    <span class="text-gradient" id="typing-text">Code & AI</span>
+                    <span class="animate-pulse">|</span>
+                </h1>
+                <p class="text-xl text-slate-400 max-w-2xl mx-auto lg:mx-0">
+                    I'm <strong>Anees Ashraf</strong>. I specialize in building robust MERN stack applications and integrating cutting-edge Agentic AI solutions to automate and elevate user experiences.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="#projects" class="px-8 py-4 bg-white text-dark-950 font-bold rounded-lg hover:bg-slate-200 transition-all flex items-center justify-center gap-2">
+                        View Projects
+                        <span class="material-symbols-outlined">arrow_downward</span>
+                    </a>
+                    <a href="#contact" class="px-8 py-4 border border-slate-700 text-white font-bold rounded-lg hover:bg-slate-800 transition-all flex items-center justify-center gap-2">
+                        Contact Me
+                    </a>
+                </div>
+                
+                <!-- Stats / Quick Info -->
+                <div class="grid grid-cols-3 gap-8 pt-8 border-t border-slate-800/50 mt-8">
+                    <div>
+                        <h4 class="text-2xl md:text-3xl font-bold text-white">MUST</h4>
+                        <p class="text-sm text-slate-500">BS Computer Science</p>
+                    </div>
+                    <div>
+                        <h4 class="text-2xl md:text-3xl font-bold text-white">2+</h4>
+                        <p class="text-sm text-slate-500">Hackathon Wins</p>
+                    </div>
+                    <div>
+                        <h4 class="text-2xl md:text-3xl font-bold text-white">AI/ML</h4>
+                        <p class="text-sm text-slate-500">Integration Focus</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="order-1 lg:order-2 flex justify-center relative">
+                <div class="relative w-80 h-80 lg:w-[450px] lg:h-[450px]">
+                    <!-- Rotating dashed border -->
+                    <div class="absolute inset-0 border-2 border-dashed border-slate-700 rounded-full animate-spin-slow"></div>
+                    
+                    <!-- Main image placeholder -->
+                    <div class="absolute inset-4 rounded-full overflow-hidden border-4 border-dark-800 shadow-2xl flex items-center justify-center bg-dark-900">
+                         <!-- Fallback icon or photo -->
+                         <img src="images/Profile Picture.jpeg" alt="Anees Ashraf" class="w-full h-full object-cover object-top rounded-full">
+                    </div>
+                    
+                    <!-- Floating Tech Badges -->
+                    <div class="absolute top-10 right-10 bg-dark-800 p-3 rounded-xl shadow-xl border border-slate-700 animate-bounce">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="w-8 h-8" alt="React">
+                    </div>
+                    <div class="absolute bottom-20 left-0 bg-dark-800 p-3 rounded-xl shadow-xl border border-slate-700 animate-bounce animation-delay-2000">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="w-8 h-8" alt="Python">
+                    </div>
+                    <div class="absolute bottom-10 right-20 bg-dark-800 p-3 rounded-xl shadow-xl border border-slate-700 animate-bounce animation-delay-4000">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" class="w-8 h-8" alt="Node">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About / Journey Section -->
+    <section id="about" class="py-24 bg-dark-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- Text Area -->
+                <div>
+                    <h2 class="text-brand-400 font-medium tracking-wide uppercase mb-2">My Journey</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-white mb-6">Bridging Web Dev & AI</h3>
+                    <p class="text-slate-400 leading-relaxed mb-6">
+                        As a Computer Science senior at the Mirpur University of Sciences & Technology (MUST), my passion lies at the intersection of full-stack development and artificial intelligence. I focus on creating MERN stack applications that are not just functional, but intelligent.
+                    </p>
+                    <p class="text-slate-400 leading-relaxed mb-8">
+                        My recent endeavors involve building Multi-Agent Systems utilizing tools like IBM watsonx and Groq AI, automating complex workflows, and drastically reducing manual effort. When I'm not coding, you can find me playing Football, Cricket, or Basketball.
+                    </p>
+                    
+                    <!-- <div class="flex gap-4">
+                        <button onclick="showToast('info', 'Connecting to LinkedIn...')" class="flex items-center gap-2 text-white border-b-2 border-brand-500 pb-1 hover:text-brand-400 transition-colors">
+                            <span class="material-symbols-outlined text-sm">open_in_new</span>
+                            LinkedIn
+                        </button>
+                         <a href="#" class="flex items-center gap-2 text-white border-b-2 border-slate-700 pb-1 hover:text-brand-400 transition-colors">
+                            <span class="material-symbols-outlined text-sm">code</span>
+                            Github Profile
+                        </a>
+                    </div> -->
+                </div>
+                <!-- Timeline -->
+                <div class="relative pl-8 border-l border-slate-700 space-y-12">
+                    
+                    <!-- MUST -->
+                    <div class="relative group">
+                        <div class="absolute -left-[41px] bg-brand-500 h-5 w-5 rounded-full border-4 border-dark-900"></div>
+                        <span class="text-sm text-brand-400 font-mono mb-1 block">2021 - 2025</span>
+                        <h4 class="text-xl font-bold text-white">BS Computer Science</h4>
+                        <p class="text-slate-500 text-sm mb-2">Mirpur University of Science & Technology, Pakistan</p>
+                        <p class="text-slate-400 text-sm">Pursuing my degree with a focus on web technologies, algorithms, and artificial intelligence.</p>
+                    </div>
+                    
+                    <!-- Pearl Pakistan -->
+                    <div class="relative group">
+                        <div class="absolute -left-[41px] bg-slate-600 group-hover:bg-brand-500 transition-colors h-5 w-5 rounded-full border-4 border-dark-900"></div>
+                        <span class="text-sm text-brand-400 font-mono mb-1 block">Aug 2025 - Sep 2025</span>
+                        <h4 class="text-xl font-bold text-white">Software Developer</h4>
+                        <p class="text-slate-500 text-sm mb-2">Pearl Pakistan</p>
+                        <p class="text-slate-400 text-sm">Contributed to full-stack web development projects utilizing the MERN stack. Integrated frontend components with backend REST APIs and participated in deployment.</p>
+                    </div>
+
+                    <!-- NAVTTC -->
+                    <div class="relative group">
+                        <div class="absolute -left-[41px] bg-slate-600 group-hover:bg-brand-500 transition-colors h-5 w-5 rounded-full border-4 border-dark-900"></div>
+                        <span class="text-sm text-brand-400 font-mono mb-1 block">3 Months Program</span>
+                        <h4 class="text-xl font-bold text-white">MERN Stack Developer</h4>
+                        <p class="text-slate-500 text-sm mb-2">NAVTTC Training</p>
+                        <p class="text-slate-400 text-sm">Gained extensive proficiency in MongoDB, Express.js, React, and Node.js. Designed databases and built responsive user interfaces.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 bg-dark-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-brand-400 font-medium tracking-wide uppercase mb-2">My Arsenal</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-white">Technologies & Tools</h3>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6" id="skills-grid">
+                <!-- Dynamically populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects / Hackathons Section -->
+    <section id="projects" class="py-24 bg-dark-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div>
+                    <h2 class="text-brand-400 font-medium tracking-wide uppercase mb-2">Portfolio</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-white">Featured Work & Hackathons</h3>
+                </div>
+                
+                <!-- Filter Buttons -->
+                <div class="flex flex-wrap gap-2 bg-dark-950 p-1 rounded-lg border border-slate-800">
+                    <button class="filter-btn active px-4 py-2 rounded-md text-sm font-medium transition-all bg-brand-600 text-white" data-filter="all">All</button>
+                    <button class="filter-btn px-4 py-2 rounded-md text-sm font-medium text-slate-400 hover:text-white transition-all hover:bg-slate-800" data-filter="AI/ML">AI / Agents</button>
+                    <button class="filter-btn px-4 py-2 rounded-md text-sm font-medium text-slate-400 hover:text-white transition-all hover:bg-slate-800" data-filter="Web Dev">Web Dev</button>
+                </div>
+            </div>
+
+            <!-- Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+                <!-- Dynamically populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-24 bg-dark-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-brand-400 font-medium tracking-wide uppercase mb-2">Continuous Learning</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-white">Licenses & Certifications</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-dark-900 border border-slate-800 p-5 rounded-xl hover:border-brand-500 transition-colors flex items-start gap-4">
+                    <span class="material-symbols-outlined text-brand-400 text-3xl mt-1">military_tech</span>
+                    <div>
+                        <h4 class="text-white font-bold">Generative AI Application Developer</h4>
+                        <p class="text-slate-500 text-sm">UETIANS Lahore Endowment Foundation | Dec 2025</p>
+                    </div>
+                </div>
+                
+                <div class="bg-dark-900 border border-slate-800 p-5 rounded-xl hover:border-brand-500 transition-colors flex items-start gap-4">
+                    <span class="material-symbols-outlined text-brand-400 text-3xl mt-1">emoji_events</span>
+                    <div>
+                        <h4 class="text-white font-bold">Agentic AI Hackathon (IBM watsonx)</h4>
+                        <p class="text-slate-500 text-sm">LabLab.ai | Nov 2025</p>
+                    </div>
+                </div>
+
+                <div class="bg-dark-900 border border-slate-800 p-5 rounded-xl hover:border-brand-500 transition-colors flex items-start gap-4">
+                    <span class="material-symbols-outlined text-brand-400 text-3xl mt-1">smart_toy</span>
+                    <div>
+                        <h4 class="text-white font-bold">N8N Chatbot Lab Certificate</h4>
+                        <p class="text-slate-500 text-sm">DataCrumbs | Jan 2026</p>
+                    </div>
+                </div>
+
+                <div class="bg-dark-900 border border-slate-800 p-5 rounded-xl hover:border-brand-500 transition-colors flex items-start gap-4">
+                    <span class="material-symbols-outlined text-brand-400 text-3xl mt-1">router</span>
+                    <div>
+                        <h4 class="text-white font-bold">Cisco Network Technician</h4>
+                        <p class="text-slate-500 text-sm">Cisco Networking Academy</p>
+                    </div>
+                </div>
+                
+                <div class="bg-dark-900 border border-slate-800 p-5 rounded-xl hover:border-brand-500 transition-colors flex items-start gap-4">
+                    <span class="material-symbols-outlined text-brand-400 text-3xl mt-1">school</span>
+                    <div>
+                        <h4 class="text-white font-bold">Multiple Google Certifications</h4>
+                        <p class="text-slate-500 text-sm text-balance">Discover Prompting, AI Productivity, Crash Course on Python, Tech Support Fundamentals, and more.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-900 to-transparent z-0"></div>
+
+        <div class="max-w-4xl mx-auto px-4 relative z-10">
+            <div class="bg-dark-950/80 backdrop-blur-md rounded-2xl p-8 md:p-12 border border-slate-800 shadow-2xl">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-bold text-white mb-4">Let's Connect</h2>
+                    <p class="text-slate-400">Feel free to reach out via email for opportunities or collaboration.</p>
+                    <a href="mailto:anees.ashraf.1725@gmail.com" class="inline-block mt-4 text-brand-400 text-lg hover:underline font-mono">anees.ashraf.1725@gmail.com</a>
+                </div>
+
+                <form id="contact-form" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-400 mb-2">Name</label>
+                            <!-- Added name="name" and id="user-name" -->
+                            <input type="text" name="name" id="user-name" required class="w-full bg-dark-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all placeholder-slate-600" placeholder="Your Name">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-400 mb-2">Email</label>
+                            <!-- Added name="email" and id="user-email" -->
+                            <input type="email" name="email" id="user-email" required class="w-full bg-dark-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all placeholder-slate-600" placeholder="your@email.com">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-400 mb-2">Message</label>
+                        <!-- Added name="message" and id="user-message" -->
+                        <textarea rows="4" name="message" id="user-message" required class="w-full bg-dark-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all placeholder-slate-600" placeholder="How can I help you?"></textarea>
+                    </div>
+                    
+                    <!-- NEW: FormSubmit configuration fields (Hidden) -->
+                    <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission!">
+                    <input type="hidden" name="_template" value="table">
+                    
+                    <button type="submit" class="w-full bg-brand-600 text-white font-bold py-4 rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2 group">
+                        <span id="btn-text">Send Message</span>
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" id="btn-icon">send</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-950 border-t border-slate-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <span class="text-xl font-bold font-mono text-white block mb-2">&lt;<span class="text-brand-400">Anees</span>/&gt;</span>
+                <p class="text-slate-500 text-sm">© 2026 Anees Ashraf. All rights reserved.</p>
+            </div>
+            <!-- <div class="flex gap-6">
+                <a href="#" class="text-slate-400 hover:text-white transition-colors flex items-center gap-2">LinkedIn</a>
+                <a href="#" class="text-slate-400 hover:text-white transition-colors flex items-center gap-2">GitHub</a>
+            </div> -->
+        </div>
+    </footer>
+
+    <!-- Project Details Modal -->
+    <div id="project-modal" class="fixed inset-0 z-[60] hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="fixed inset-0 bg-dark-950/90 backdrop-blur-sm transition-opacity opacity-0" id="modal-backdrop"></div>
+
+        <div class="flex items-center justify-center min-h-screen p-4 text-center sm:p-0">
+            <div class="relative bg-dark-900 rounded-2xl border border-slate-700 text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:max-w-2xl sm:w-full opacity-0 translate-y-4 scale-95" id="modal-panel">
+                <button onclick="closeModal()" class="absolute top-4 right-4 z-10 p-2 bg-dark-950/50 rounded-full text-white hover:bg-white hover:text-black transition-colors">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+
+                <div class="p-8 lg:p-10 flex flex-col">
+                    <div class="mb-auto">
+                        <span id="modal-category" class="text-brand-400 text-sm font-mono font-bold uppercase tracking-wider mb-2 block"></span>
+                        <h3 id="modal-title" class="text-3xl font-bold text-white mb-4"></h3>
+                        <p id="modal-desc" class="text-slate-400 mb-6 leading-relaxed"></p>
+                        
+                        <h4 class="text-white font-bold mb-3">Tech Stack</h4>
+                        <div id="modal-tech" class="flex flex-wrap gap-2 mb-8">
+                            <!-- Populated via JS -->
+                        </div>
+
+                        <h4 class="text-white font-bold mb-3">Key Highlights</h4>
+                        <ul id="modal-features" class="space-y-2 text-slate-400 text-sm mb-8 list-disc list-inside">
+                            <!-- Populated via JS -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Logic -->
+    <script src="script.js" defer></script>
+</body>
+</html>
