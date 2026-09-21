@@ -20,6 +20,44 @@
             },
             {
                 id: 3,
+                title: "Habit Architect – AI Habit Coach",
+                category: "AI/ML",
+                description: "Built an AI-powered habit-building dashboard that transforms personal goals into structured daily routines. Habit Architect uses Google Gemini to generate personalized habit plans, Firebase to synchronize user progress, and behavioral insights to help users build consistency over time.",
+                tech: ["React", "TypeScript", "Google Gemini", "Firebase", "Firestore", "Tailwind CSS"],
+                url: "https://habit-architect-dashboard.vercel.app/",
+                features: [
+                    "AI-generated personalized habit plans from natural-language goals",
+                    "Structured JSON prompting for reliable AI-generated routines",
+                    "Google authentication with Firebase",
+                    "Real-time habit and progress synchronization with Firestore",
+                    "Weekly check-ins with empathetic AI feedback",
+                    "Resilience Score based on habit completion progress",
+                    "Interactive week view and daily habit tracking",
+                    "Animated dashboard with progress feedback and confetti rewards",
+                    "Local persistence for habit data and offline-friendly usage"
+                ]
+            },
+            {
+                id: 4,
+                title: "EduSlide AI – AI Presentation Generator",
+                category: "AI/ML",
+                description: "Built an AI-powered presentation generator that transforms text topics, PDFs, and images into structured PowerPoint presentations. EduSlide AI uses Google Gemini to organize educational content into slide-ready sections, optionally generate contextual visuals, and export editable PPTX files with customizable themes.",
+                tech: ["React", "TypeScript", "Python", "Flask", "Google Gemini", "Tailwind CSS", "python-pptx", "PyPDF", "Pillow"],
+                url: "https://eduslide-ai-landing-page.vercel.app/",
+                features: [
+                    "Generates presentation structures from topics, PDFs, and images",
+                    "Uses Google Gemini for AI-powered content organization",
+                    "Supports optional AI-generated images for presentation slides",
+                    "Provides an interactive preview and editing workflow",
+                    "Exports presentations as downloadable .pptx files",
+                    "Includes Modern Light, Dark Mode, and Professional Blue themes",
+                    "Supports drag-and-drop file uploads",
+                    "Built a Flask backend for AI processing and PowerPoint generation",
+                    "Separates frontend presentation controls from backend document generation"
+                ]
+            },
+            {
+                id: 5,
                 title: "Full-Stack Web Applications",
                 category: "Web Dev",
                 description: "Developed multiple scalable and responsive full-stack web applications implementing modern web architecture and seamless RESTful APIs.",
@@ -27,7 +65,7 @@
                 features: ["Responsive frontend components", "Robust RESTful backend APIs", "Optimized MongoDB schema design", "Secure data management"]
             },
             {
-                id: 4,
+                id: 6,
                 title: "Rentify – Car Rental Marketplace",
                 category: "Web Dev",
                 description: "Built a modern car rental marketplace that connects customers with vehicle vendors. Rentify includes role-based dashboards for customers, vendors, and administrators, allowing users to browse vehicles, submit booking requests, manage listings, and track rental workflows.",
