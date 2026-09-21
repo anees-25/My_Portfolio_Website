@@ -58,6 +58,23 @@
             },
             {
                 id: 5,
+                title: "VisionAi – Computer Vision Intelligence",
+                category: "AI/ML",
+                description: "Built a modular Python-based computer vision project for intelligent image and video analysis. VisionAi is designed as a scalable foundation for preprocessing, inference, object detection/classification workflows, and model experimentation, making it suitable for research, prototyping, and real-world AI deployment.",
+                tech: ["Python", "OpenCV", "NumPy", "PyTorch / TensorFlow", "Matplotlib", "FastAPI / Flask", "CUDA-enabled GPU support"],
+                url: "https://huggingface.co/spaces/anees1725/VisionAi",
+                features: [
+                    "Modular image and video processing pipeline",
+                    "Configurable model and data paths",
+                    "Preprocessing, inference, and result visualization workflow",
+                    "Support for object detection and classification tasks",
+                    "API-ready design for deployment and integration",
+                    "Structured project layout for experimentation and scaling",
+                    "Suitable for research, prototype, and production ML use cases"
+                ]
+            },
+            {
+                id: 6,
                 title: "Full-Stack Web Applications",
                 category: "Web Dev",
                 description: "Developed multiple scalable and responsive full-stack web applications implementing modern web architecture and seamless RESTful APIs.",
