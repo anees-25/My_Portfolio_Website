@@ -82,7 +82,7 @@
                 features: ["Responsive frontend components", "Robust RESTful backend APIs", "Optimized MongoDB schema design", "Secure data management"]
             },
             {
-                id: 6,
+                id: 7,
                 title: "Rentify – Car Rental Marketplace",
                 category: "Web Dev",
                 description: "Built a modern car rental marketplace that connects customers with vehicle vendors. Rentify includes role-based dashboards for customers, vendors, and administrators, allowing users to browse vehicles, submit booking requests, manage listings, and track rental workflows.",
