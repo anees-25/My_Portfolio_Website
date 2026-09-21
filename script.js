@@ -15,6 +15,7 @@
                 category: "AI/ML",
                 description: "Developed an intelligent ticket resolution system using a multi-agent architecture (Triage, Routing, Resolution agents) utilizing Groq AI's API for rapid inference.",
                 tech: ["Groq AI", "Python", "SQLite", "Agent Orchestration"],
+                url: "https://huggingface.co/spaces/anees1725/IT-Resolve-AI",
                 features: ["End-to-end customer support automation", "Automated ticket categorization", "Intelligent response generation", "Integrated SQLite knowledge base"]
             },
             {
@@ -24,6 +25,22 @@
                 description: "Developed multiple scalable and responsive full-stack web applications implementing modern web architecture and seamless RESTful APIs.",
                 tech: ["MongoDB", "Express.js", "React.js", "Node.js"],
                 features: ["Responsive frontend components", "Robust RESTful backend APIs", "Optimized MongoDB schema design", "Secure data management"]
+            },
+            {
+                id: 4,
+                title: "Rentify – Car Rental Marketplace",
+                category: "Web Dev",
+                description: "Built a modern car rental marketplace that connects customers with vehicle vendors. Rentify includes role-based dashboards for customers, vendors, and administrators, allowing users to browse vehicles, submit booking requests, manage listings, and track rental workflows.",
+                tech: ["TypeScript", "React", "Supabase", "PostgreSQL", "Tailwind CSS"],
+                url: "https://rentify-mirpur.vercel.app/",
+                features: [
+                    "Role-based authentication for customers, vendors, and admins",
+                    "Vehicle listing and availability management",
+                    "Customer booking request workflow",
+                    "Vendor dashboard for managing vehicles and bookings",
+                    "Admin dashboard for vendor verification and platform management",
+                    "Supabase Row Level Security for protected data access"
+                ]
             }
         ];
 
@@ -91,10 +108,13 @@
                             ${project.tech.map(t => `<span class="text-xs text-slate-500 bg-dark-950 px-2 py-1 rounded border border-slate-800">${t}</span>`).join('')}
                         </div>
 
-                        <button onclick="openModal(${project.id})" class="w-full py-2 rounded-lg border border-slate-700 text-slate-300 hover:text-white hover:border-brand-500 hover:bg-brand-500/10 transition-all text-sm font-bold flex items-center justify-center gap-2 group-btn">
-                            View Details 
-                            <span class="material-symbols-outlined text-sm group-btn-hover:translate-x-1 transition-transform">arrow_forward</span>
-                        </button>
+                        <div class="flex gap-2">
+                            <button onclick="openModal(${project.id})" class="flex-1 py-2 rounded-lg border border-slate-700 text-slate-300 hover:text-white hover:border-brand-500 hover:bg-brand-500/10 transition-all text-sm font-bold flex items-center justify-center gap-2 group-btn">
+                                View Details
+                                <span class="material-symbols-outlined text-sm group-btn-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </button>
+                            ${project.url ? `<a href="${project.url}" target="_blank" rel="noopener noreferrer" aria-label="Open ${project.title}" class="px-3 py-2 rounded-lg border border-brand-500/40 text-brand-400 hover:text-white hover:bg-brand-500 transition-all flex items-center justify-center"><span class="material-symbols-outlined text-sm">open_in_new</span></a>` : ''}
+                        </div>
                     </div>
                 `).join('');
                 
@@ -129,6 +149,10 @@
             document.getElementById('modal-category').innerText = project.category;
             document.getElementById('modal-title').innerText = project.title;
             document.getElementById('modal-desc').innerText = project.description;
+
+            const modalLink = document.getElementById('modal-link');
+            modalLink.classList.toggle('hidden', !project.url);
+            if (project.url) modalLink.href = project.url;
             
             document.getElementById('modal-tech').innerHTML = project.tech.map(t => 
                 `<span class="text-xs font-mono text-brand-300 bg-brand-900/50 px-3 py-1 rounded-full border border-brand-500/20">${t}</span>`
