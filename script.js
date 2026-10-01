@@ -75,11 +75,21 @@
             },
             {
                 id: 6,
-                title: "Full-Stack Web Applications",
+                title: "Orbit — Multi-Tenant Workflow Dashboard",
                 category: "Web Dev",
-                description: "Developed multiple scalable and responsive full-stack web applications implementing modern web architecture and seamless RESTful APIs.",
-                tech: ["MongoDB", "Express.js", "React.js", "Node.js"],
-                features: ["Responsive frontend components", "Robust RESTful backend APIs", "Optimized MongoDB schema design", "Secure data management"]
+                description: "Built a production-minded workflow and task management platform designed for collaborative teams. Orbit includes multi-tenant workspaces, role-based access control, Kanban task tracking, project dashboards, and secure authentication, making it a strong full-stack project for real-world team productivity workflows.",
+                tech: ["React", "Vite", "Node.js", "Express", "MongoDB", "Mongoose", "JWT", "REST API"],
+                url: "https://orbit-workflow-dashboard.vercel.app/",
+                features: [
+                    "Multi-tenant workspace architecture with member roles",
+                    "Kanban-style task board with drag-and-drop task movement",
+                    "Project and task management with filters and search",
+                    "Workspace switching and invite flow",
+                    "Secure JWT authentication with HTTP-only cookies",
+                    "MongoDB-backed data model with tenant-scoped access",
+                    "Responsive dark UI and analytics overview",
+                    "Optimistic frontend updates for smoother workflow actions"
+                ]
             },
             {
                 id: 7,
